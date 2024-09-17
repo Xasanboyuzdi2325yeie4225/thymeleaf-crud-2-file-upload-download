@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>put user</title>
+</head>
+<body>
+<h1><div style="text-align: center">PUT user page</div></h1>
+<br><br><br>
+<form th:action="@{/user/put2}" method="post" th:object="${user}">
+    <label >
+        <input th:field="*{id}" type="number" th:value="${user.id}" />
+    </label>
+    <br/>
+    <label>
+        <input type="text"  th:field="*{firstName}" value="firstName"/>
+    </label>
+    <br/>
+    <label>
+        <input type="text" th:field="*{lastName}" value="lastName"/>
+    </label>
+    <br/>
+    <label>
+        <input type="email" th:field="*{email}" value="email"/>
+    </label>
+    <br/>
+    <label>
+        <input type="text" th:field="*{password}" value="password"/>
+    </label>
+    <br/>
+    <label>
+        <input th:field="*{role}" type="text" value="role"/>
+    </label>
+    <br/>
+    <input type="submit" value="submit"/>
+</form>
+
+</body>
+</html>

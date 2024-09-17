@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>read user</title>
+</head>
+<body>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>email</th>
+        <th>password</th>
+        <th>role</th>
+        <th>created at</th>
+        <th>updated at</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="u:${users}">
+        <td th:text="${u.id}"></td>
+        <td th:text="${u.firstName}"></td>
+        <td th:text="${u.lastName}"></td>
+        <td th:text="${u.email}"></td>
+        <td th:text="${u.password}"></td>
+        <td th:text="${u.role}"></td>
+        <td th:text="${u.createdAt}"></td>
+        <td th:text="${u.updatedAt}"></td>
+        <td><a th:href="@{/user/put1(id=${u.id})}">UPDATE</a></td>
+        <td>
+            <form th:action="@{/user/delete(id=${u.id})}" method="post">
+                <input type="submit" value="DELETE" onclick="return confirm('chindan o`chirmoqchimisiz?')">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<form th:action="@{/file-modal/upload}" method="post" enctype="multipart/form-data">
+        <input type="file" name="files"/><br>
+        <input type="submit" value="upload">
+</form>
+<a th:href="@{/file-modal/get}">LOAD FILES</a>
+</body>
+</html>

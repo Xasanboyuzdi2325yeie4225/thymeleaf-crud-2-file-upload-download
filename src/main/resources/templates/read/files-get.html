@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>get files</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>file name</th>
+        <th>file type</th>
+        <th>content</th>
+        <th>created at</th>
+        <th>DOWNLOAD</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="f:${files}">
+        <td th:text="${f.id}"></td>
+        <td th:text="${f.fileName}"> </td>
+        <td th:text="${f.fileType}"></td>
+        <td th:text="${f.content}"></td>
+        <td th:text="${f.createdAt}"></td>
+        <td>
+            <table border="1">
+                <tr>
+                    <td th:text="${f.fileName}"></td>
+                    <td><a th:href="@{/file-modal/download(id=${f.id})}">Download</a></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <form th:action="@{/file-modal/del(id=${f.id})}" method="post">
+                <input type="submit" value="DELETE" onclick="return confirm('faylni chindan o`chirmoqchimisi?')">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
